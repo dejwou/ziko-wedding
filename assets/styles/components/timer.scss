@@ -1,0 +1,57 @@
+.timer {
+    margin-top: 6rem;
+    width: 100%;
+    padding: 6rem 2.5rem;
+    background-image: url("@/assets/images/wedding/rings.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    text-align: center;
+
+    & > h6 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 120%;
+        margin-bottom: 3rem;
+    }
+
+    &-countdown {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: .6rem;
+
+        & > * {
+            color: #fff;
+        }
+    }
+
+    &-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        max-width: calc(100%/4);
+        width: 100%;
+        padding: .7rem 0;
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 1rem;
+
+        &>* {
+            line-height: 110%;
+        }
+
+        &-number {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: .4rem;
+        }
+
+        &-label {
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+    }
+}

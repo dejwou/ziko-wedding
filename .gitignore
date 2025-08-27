@@ -1,0 +1,53 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Nuxt.js specific
+.nuxt/
+dist/
+.output/
+nuxt.config.ts.bak
+nuxt.config.js.bak
+
+# Build and output directories
+public/_nuxt/
+build/
+coverage/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
+
+# Dependency directories
+bower_components/
+
+# Optional: Ignore local development files
+*.local
