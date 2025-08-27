@@ -1,5 +1,5 @@
 <template>
-  <div class="background-music" v-if="showControl">
+  <div class="background-music">
     <audio ref="audio" loop>
       <source :src="audioSource" type="audio/mp3" />
       Ваш браузер не поддерживает элемент audio.
@@ -14,26 +14,24 @@
       <span v-else>🔇</span>
     </button>
   </div>
-  <audio ref="audio" loop v-else>
-    <source :src="audioSource" type="audio/mp3" />
-    Ваш браузер не поддерживает элемент audio.
-  </audio>
 </template>
 
 <script lang="ts" setup>
 const audio = ref<HTMLAudioElement | null>(null)
 const audioSource = '/morunas.mp3'
 const isPlaying = ref(false)
-const showControl = ref(true)
+const manuallyStopped = ref(false)
 
 const toggleMusic = () => {
   if (audio.value) {
     if (isPlaying.value) {
       audio.value.pause()
       isPlaying.value = false
+      manuallyStopped.value = true
     } else {
       audio.value.play()
       isPlaying.value = true
+      manuallyStopped.value = false
     }
   }
 }
@@ -49,17 +47,55 @@ onMounted(() => {
       playPromise
         .then(() => {
           isPlaying.value = true
-          // Hide the control after 3 seconds if music starts playing
-          setTimeout(() => {
-            showControl.value = false
-          }, 3000)
         })
         .catch(() => {
           // Audio couldn't play automatically, keep control visible
           isPlaying.value = false
+          console.log('Autoplay blocked by browser. User needs to interact first.')
         })
     }
   }
+})
+
+// Listen for user interaction to enable autoplay
+onMounted(() => {
+  let listenersRemoved = false
+  
+  const enableAudio = (eventType: string) => {
+    console.log(`Interaction detected: ${eventType}`, { 
+      isPlaying: isPlaying.value, 
+      manuallyStopped: manuallyStopped.value, 
+      listenersRemoved 
+    })
+    
+    if (audio.value && !isPlaying.value && !manuallyStopped.value && !listenersRemoved) {
+      console.log('Attempting to play audio...')
+      audio.value.play().then(() => {
+        console.log('Audio started successfully!')
+        isPlaying.value = true
+        
+        // Remove event listeners after successful play
+        if (!listenersRemoved) {
+          listenersRemoved = true
+          document.removeEventListener('click', () => enableAudio('click'))
+          document.removeEventListener('touchstart', () => enableAudio('touch'))
+          document.removeEventListener('keydown', () => enableAudio('keyboard'))
+          document.removeEventListener('scroll', () => enableAudio('scroll'))
+          console.log('Event listeners removed')
+        }
+      }).catch(err => {
+        console.log('Still cannot play audio:', err)
+      })
+    }
+  }
+  
+  // Add event listeners for user interaction
+  document.addEventListener('click', () => enableAudio('click'))
+  document.addEventListener('touchstart', () => enableAudio('touch'))
+  document.addEventListener('keydown', () => enableAudio('keyboard'))
+  document.addEventListener('scroll', () => enableAudio('scroll'))
+  
+  console.log('Event listeners added for: click, touch, keyboard, scroll')
 })
 </script>
 
@@ -99,4 +135,5 @@ onMounted(() => {
 .music-control.playing:hover {
   background: rgba(65, 65, 65, 1);
 }
+
 </style>
