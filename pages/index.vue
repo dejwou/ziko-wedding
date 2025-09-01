@@ -4,7 +4,7 @@
         <img src="../assets/images/wedding/xz.png" alt="Ziyoda and Hasanboy" >
         <div class="header-waiting">
           <p>Ждем вас</p>
-          <h6>20/09/25</h6>
+          <h6>29/09/25</h6>
         </div>
         <div class="header-content">
           <span>&</span>

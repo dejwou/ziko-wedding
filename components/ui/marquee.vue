@@ -3,7 +3,7 @@
     <div class="marquee">
       <div class="track">
         <p v-for="i in 16" :key="i">
-          <span v-html="heart"></span>X DAY 20.09.2025
+          <span v-html="heart"></span>X DAY 29.09.2025
         </p>
       </div>
     </div>

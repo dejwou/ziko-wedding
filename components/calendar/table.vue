@@ -36,7 +36,7 @@
         <td>17</td>
         <td>18</td>
         <td>19</td>
-        <td class="highlight"><span v-html="heart"></span>20</td>
+        <td>20</td>
         <td>21</td>
       </tr>
       <tr>
@@ -49,7 +49,7 @@
         <td>28</td>
       </tr>
       <tr>
-        <td>29</td>
+        <td class="highlight"><span v-html="heart"></span>29</td>
         <td>30</td>
         <td></td>
         <td></td>

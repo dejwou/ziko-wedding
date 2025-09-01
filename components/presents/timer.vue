@@ -29,7 +29,8 @@
 
 import Countdown from "~/composables/countdown";
 
-const countdown = new Countdown(new Date("2025-09-20T18:00:00"));
+// const countdown = new Countdown(new Date("2025-09-29T18:00:00"));
+const countdown = new Countdown(new Date("2025-09-29T18:00:00"));
 </script>
 
 <style lang="scss" scoped></style>

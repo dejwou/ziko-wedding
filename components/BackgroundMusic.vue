@@ -39,8 +39,6 @@ const toggleMusic = () => {
 onMounted(() => {
   if (audio.value) {
     audio.value.volume = 0.5;
-    
-    // Try to play automatically
     const playPromise = audio.value.play()
     
     if (playPromise !== undefined) {
@@ -49,7 +47,6 @@ onMounted(() => {
           isPlaying.value = true
         })
         .catch(() => {
-          // Audio couldn't play automatically, keep control visible
           isPlaying.value = false
           console.log('Autoplay blocked by browser. User needs to interact first.')
         })
@@ -57,7 +54,6 @@ onMounted(() => {
   }
 })
 
-// Listen for user interaction to enable autoplay
 onMounted(() => {
   let listenersRemoved = false
   
@@ -89,7 +85,6 @@ onMounted(() => {
     }
   }
   
-  // Add event listeners for user interaction
   document.addEventListener('click', () => enableAudio('click'))
   document.addEventListener('touchstart', () => enableAudio('touch'))
   document.addEventListener('keydown', () => enableAudio('keyboard'))
