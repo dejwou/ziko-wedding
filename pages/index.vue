@@ -41,7 +41,7 @@
             <span v-html="ig"></span>
           </a>
           <div class="footer-divider"></div>
-          <a class="footer-link" href="tel:+998 94 636 62 22">
+          <a class="footer-link" href="tel:+998 93 440 44 40">
             <span v-html="phone"></span>
           </a>
         </div>

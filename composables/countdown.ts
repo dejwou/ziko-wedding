@@ -1,3 +1,5 @@
+import confetti from 'canvas-confetti';
+
 export default class Countdown {
   private targetDate: Date;
   private interval: ReturnType<typeof setInterval> | undefined;
@@ -33,6 +35,7 @@ export default class Countdown {
         minutes: '00',
         seconds: '00',
       };
+      this.triggerConfetti(); // Запуск анимации конфетти
       return;
     }
 
@@ -47,6 +50,16 @@ export default class Countdown {
       minutes: m.toString().padStart(2, '0'),
       seconds: s.toString().padStart(2, '0'),
     };
+  }
+
+  private triggerConfetti() {
+    // Запуск анимации конфетти
+    confetti({
+      particleCount: 200,
+      spread: 360,
+      origin: { x: 0.5, y: 0.5 }, // Центр экрана
+      zIndex: 9999, // Чтобы конфетти было поверх всех элементов
+    });
   }
 
   public start() {
