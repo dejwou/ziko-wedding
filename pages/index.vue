@@ -1,7 +1,7 @@
 <template>
     <div class="content">
       <header class="header">
-        <img src="../assets/images/wedding/xz.JPG" alt="Ziyoda and Hasanboy" >
+        <img src="../assets/images/wedding/xz.png" alt="Ziyoda and Hasanboy" >
         <div class="header-waiting">
           <p>Ждем вас</p>
           <h6>29/09/25</h6>
