@@ -47,6 +47,7 @@
         </div>
       </footer>
     </div>
+    <BackgroundMusic />
 </template>
 
 <script setup lang="ts">
